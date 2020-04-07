@@ -31,6 +31,9 @@
         <module>Chapter9</module>
         <module>Chapter10</module>
         <module>Chapter11</module>
+        <module>Chapter5tmp</module>
+        <module>httpclient</module>
+        <module>test10</module>
 
     </modules>
 

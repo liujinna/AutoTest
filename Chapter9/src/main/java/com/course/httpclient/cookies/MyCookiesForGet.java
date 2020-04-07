@@ -2,7 +2,6 @@ package com.course.httpclient.cookies;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.CookieStore;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -43,7 +42,7 @@ public class MyCookiesForGet {
         System.out.println(result);
 
         //获取cookies信息
-        this.store = client.getCookieStore();
+       this.store = client.getCookieStore();
         List<Cookie> cookieList = store.getCookies();
 
         for (Cookie cookie : cookieList){
@@ -55,7 +54,7 @@ public class MyCookiesForGet {
 
     }
 
-    @Test(dependsOnMethods = {"testGetCookies"})
+    @Test(dependsOnMethods = {"testGetCookies"},enabled = true)
     public void testGetWithCookies() throws IOException {
         String uri = bundle.getString("test.get.with.cookies");
         String testUrl = this.url+uri;

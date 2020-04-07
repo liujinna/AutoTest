@@ -1,56 +1,53 @@
 package com.course.testng.paramter;
 
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.lang.reflect.Method;
 
 public class DataProviderTest {
-
     @Test(dataProvider = "data")
-    public void testDataProvider(String name,int age){
-        System.out.println("name =" + name +"; age=" + age);
+    public void paramTest1(String name,int age){
+        System.out.println("name:"+name+";  age:"+age);
     }
 
     @DataProvider(name="data")
-    public Object[][] providerData(){
+    public Object[][]  hahah(){
         Object[][] o = new Object[][]{
-                {"zhangsan",10},
-                {"lisi",20},
-                {"wangwu",30}
+                {"zhangshan",10},
+                {"lili", 11},
+                {"lisi", 12}
         };
-
         return o;
     }
 
     @Test(dataProvider = "methodData")
-    public void test1(String name,int age){
-        System.out.println("test111方法 name="+name+";age="+age);
+    public void paramTest3(String name,int age){
+        System.out.println("name:"+name+";  age:"+age);
     }
+
     @Test(dataProvider = "methodData")
-    public void test2(String name,int age){
-        System.out.println("test222方法 name="+name+";age="+age);
+    public void paramTest4(String name,int age){
+        System.out.println("name:"+name+";  age:"+age);
     }
 
     @DataProvider(name="methodData")
     public Object[][] methodDataTest(Method method){
-        Object[][] result=null;
-
-        if(method.getName().equals("test1")){
-            result = new Object[][]{
-                    {"zhangsan",20},
-                    {"lisi",25}
+        Object[][] ret = null;
+        if(method.getName().equals("paramTest3")){
+            ret = new Object[][]{
+                    {"zhangshan",20},
+                    {"lili", 21},
+                    {"lisi", 22}
             };
-        }else if(method.getName().equals("test2")){
-            result = new Object[][]{
-                    {"wangwu",50},
-                    {"zhaoliu",60}
+        }else if(method.getName().equals("paramTest4")){
+            ret = new Object[][]{
+                    {"zhangshan",30},
+                    {"lili", 40},
+                    {"lisi", 50}
             };
         }
-
-        return result;
+        return ret;
     }
-
-
-
 }
